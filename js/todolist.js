@@ -35,10 +35,10 @@ const Form = {
         App.refresh()
         inputItem.value = ""
         inputItem.focus()
-    }, 
-    verifyInput(value){
-        if(!value){
-           throw new Error(alert("Task must be specified"))
+    },
+    verifyInput(value) {
+        if (!value) {
+            throw new Error(alert("Task must be specified"))
         }
     }
 }
@@ -166,11 +166,12 @@ const App = {
                 Form.addItem(inputItem.value)
             })
             ul.addEventListener("click", ulEvents.clickedUl)
+            DOM.renderTask()
+            LocalStorage.setNewData()
+            inputItem.focus()
         } catch (e) {
+            console.log(e.message)
         }
-        DOM.renderTask()
-        LocalStorage.setNewData()
-        inputItem.focus()
     },
     refresh() {
         DOM.renderTask()
